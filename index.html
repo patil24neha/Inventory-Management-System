@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<!-- Code developed by Patil, Neha
+Project #1
+Spring 2018
+Username : jadrn029, 
+RED ID : 821545485 -->
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, no-store, must-revalidate" />
+	<META HTTP-EQUIV="Pragma" CONTENT="no-cache" />
+	<META HTTP-EQUIV="Expires" CONTENT="0" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Shoe Girl</title>
+	<link rel="stylesheet" href="MyCSS.css"/>
+	<script src="/jquery/jQueryUI.js"></script>
+	<script src="MyJavaScript.js"></script>	
+	<script src="deleteProduct.js"></script>
+	<script src="updateProduct.js"></script>	
+	   
+</head>
+<body>
+ 
+<div id="header"></div>
+
+<div id="content">
+<form action="" method="POST" >
+<span class="bold">Username : </span><input type="text" name="username" size="15" id="username" />
+<br><br>
+<span class="bold">Password : </span><input type="password" name="password" size="15" id="password"/>
+ <br><br>
+<input type="reset" class="btn btn-primary btn-lg" value="Clear" id="LoginReset">
+<input type="submit"  value="Login" name="submit" class="btn btn-primary btn-lg"/>
+</form>
+<div id="loginerror"></div>
+
+</div>
+
+<div id="tabs">
+
+<div>
+<a href="http://jadran.sdsu.edu/perl/jadrn029/proj1/logout.cgi" id="logout"><input type="button" class="btn btn-primary btn-md" value="Logout Now"></a></div>
+
+      <ul>
+        <li><a href="#tabs-1"><span id="newTab">New Record</span></a></li>
+        <li><a href="#tabs-2"><span>Edit Record</span></a></li>
+        <li><a href="#tabs-3"><span id="deleteTab">Delete Record</span></a></li>       
+      </ul>
+	  
+	<div id="tabs-1">
+	  
+    <form method="post" enctype="multipart/form-data" name="newRecordform" id="newRecordform" action="">
+	 <div id="newstatus"></div>
+	  <br><br>
+	      <table>
+	   
+         <tr>
+           <td class="required">SKU:</td>
+           <td><input type="text" name="sku" id="sku" size="15" maxlength="7" placeholder=" ABC-123"></td>
+			<td> <div id="skuerror" class="error"></div></td>     
+         </tr>
+
+         <tr>
+           <td class="required">Category:</td>
+           <td><select name="category" id="category"><option value="">Select Category..</option></select></td>
+          <td>  <div id="caterror" class="error"></div></td> 
+         </tr>
+		 
+         <tr>
+           <td class="required">Vendor:</td>
+           <td><select name="vendor" id="vendor"><option value="">Select Vendor..</option></select></td>
+         <td>  <div id="vendorerror" class="error"></div></td> 
+         </tr>
+
+         <tr>
+           <td class="required">Manufacturer's Identifier:</td>
+           <td><input type="text" name="mfid" id="mfid" size="15" maxlength="50"></td>
+          <td>  <div id="mfiderror" class="error"></div></td> 
+         </tr>
+
+         <tr>
+           <td class="required">Description:</td>
+           <td><textarea rows="4" cols="35" name="desc" id="desc" maxlength="1024"></textarea></td>
+           <td>  <div id="descerror" class="error"></div></td> 
+         </tr>
+
+         <tr>
+           <td class="required">Features:</td>
+           <td><textarea rows="4" cols="35" name="features" id="features" maxlength="512"></textarea></td>
+           <td>  <div id="featureerror" class="error"></div></td> 
+         </tr>
+
+         <tr>
+           <td class="required">Cost:</td>
+           <td>  <input type="text" size="15" name="cost" id="cost" maxlength="8"></td>
+          <td>  <div id="costerror" class="error"></div></td> 
+         </tr>
+
+         <tr>
+           <td class="required">Retail:<span id="dollar">$</span></td>
+           <td><input type="text" size="15" name="retail" id="retail" class="retail" maxlength="8"></td>
+         <td>  <div id="retailerror" class="error"></div></td> 
+         </tr>
+
+		  <tr>
+           <td class="required">Quantity:</td>
+           <td>  <input type="text" size="15" name="quantity" id="quantity" maxlength="10"></td>
+         <td>  <div id="quantityerror" class="error"></div></td> 
+         </tr>
+		 
+         <tr>
+           <td class="required">Product Image:</td>
+           <td class="inline"><input type="file" name="picture" id="pic" accept="image/*"><input type="button" id="imgbutton" value="Upload" class="btn btn-primary btn-lg"/></td>
+		   <td> <div id="imageerror" class="error"></div></td> 
+         </tr>
+		 
+		 <tr>
+           <td></td>
+           <td><img src="defaultPic.png" height="100px" width="auto" id="picshow"></td>
+		   <td></td>
+         </tr>
+		 
+        </table>
+         <br><br>
+		 <div class="formButtons">
+		 <input type="reset" name="new_reset" id="new_reset" class="btn btn-primary btn-lg" value="Clear">
+         <input type="button" id="new" name="new" value="Add Product" class="btn btn-primary btn-lg"><span id="pict"></span>
+		 </div>
+         <br>
+		 
+	</form>
+	</div>
+      
+	<div id="tabs-2">
+	  
+        <form method="post" enctype="multipart/form-data" name="editRecordform" id="editRecordform" action="">
+	 <div id="editstatus" ></div>
+	  <br><br>
+	      <table>
+	   
+         <tr>
+           <td class="required">SKU:</td>
+           <td><input type="text" name="esku" id="esku" size="15" maxlength="7" placeholder=" ABC-123"></td>
+			<td> <div id="eskuerror" class="error"></div></td>     
+         </tr>
+
+         <tr>
+           <td class="required">Category:</td>
+           <td><select name="ecategory" id="ecategory"><option value="">Select Category..</option></select></td>
+          <td>  <div id="ecaterror" class="error"></div></td> 
+         </tr>
+		 
+         <tr>
+           <td class="required">Vendor:</td>
+           <td><select name="evendor" id="evendor"><option value="">Select Vendor..</option></select></td>
+         <td>  <div id="evendorerror" class="error"></div></td> 
+         </tr>
+
+         <tr>
+           <td class="required">Manufacturer's Identifier:</td>
+           <td><input type="text" name="emfid" id="emfid" size="15" maxlength="50"></td>
+          <td>  <div id="emfiderror" class="error"></div></td> 
+         </tr>
+
+         <tr>
+           <td class="required">Description:</td>
+           <td><textarea rows="4" cols="35" name="edesc" id="edesc" maxlength="1024"></textarea></td>
+           <td>  <div id="edescerror" class="error"></div></td> 
+         </tr>
+
+         <tr>
+           <td class="required">Features:</td>
+           <td><textarea rows="4" cols="35" name="efeatures" id="efeatures" maxlength="512"></textarea></td>
+           <td>  <div id="efeatureerror" class="error"></div></td> 
+         </tr>
+
+         <tr>
+           <td class="required">Cost:</td>
+           <td>  <input type="text" size="15" name="ecost" id="ecost" maxlength="8" ></td>
+          <td>  <div id="ecosterror" class="error"></div></td> 
+         </tr>
+
+
+         <tr>
+           <td class="required">Retail:<span id="dollar">$</span></td>
+           <td><input type="text" size="15" name="eretail" id="eretail" class="retail" maxlength="8"></td>
+         <td>  <div id="eretailerror" class="error"></div></td> 
+         </tr>
+
+		  <tr>
+           <td class="required">Quantity:</td>
+           <td>  <input type="text" size="15" name="equantity" id="equantity" maxlength="10"></td>
+         <td>  <div id="equantityerror" class="error"></div></td> 
+         </tr>
+		 
+         <tr>
+           <td class="required">Product Image:</td>
+           <td><input type="file" name="epicture" id="epic" accept="image/*"><input type="button" id="eimgbutton" value="Upload" class="btn btn-primary btn-lg"/></td>
+		   <td><div id="eimageerror" class="error"></div></td>
+         </tr>
+		 <tr>
+           <td></td>
+           <td><img src="defaultPic.png" id="epicshow" height="100px" width="auto"></td>
+		   <td></td>
+         </tr>
+		 
+        </table>
+         <br><br>
+		 <div class="formButtons">
+		 <input type="reset" name="edit_reset" id="edit_reset" class="btn btn-primary btn-lg" value="Clear">
+         <input type="button" id="edit" name="edit" value="Update Product" class="btn btn-primary btn-lg"><span id="epict"></span>
+		 </div>
+         <br>
+		 
+	</form>
+	</div>
+      
+	<div id="tabs-3">
+	  
+       <form method="post" enctype="multipart/form-data" name="deleteRecordform" id="deleteRecordform" action="">
+	  <div id="delstatus"></div>
+	   <br><br>
+	      <table>
+	   
+         <tr>
+           <td class="required">SKU:</td>
+           <td><input type="text" name="dsku" id="dsku" size="15" maxlength="7" placeholder=" ABC-123"></td>  
+			<td> <div id="dskuerror" class="error"></div></td>
+         </tr>
+
+         <tr>
+           <td>Category:</td>
+           <td><select name="dcategory" id="dcategory" disabled><option value="">Select Category..</option></select></td>
+         <td></td>
+         </tr>
+		 
+         <tr>
+           <td>Vendor:</td>
+           <td><select name="dvendor" id="dvendor" disabled><option value="">Select Vendor..</option></select></td>
+      <td></td>
+         </tr>
+
+         <tr>
+           <td>Manufacturer's Identifier:</td>
+           <td><input type="text" name="dmfid" id="dmfid" size="15" disabled></td>
+          <td></td>
+         </tr>
+
+         <tr>
+           <td>Description:</td>
+           <td><textarea rows="4" cols="35" name="ddesc" id="ddesc" disabled></textarea></td>
+           <td></td>
+         </tr>
+
+         <tr>
+           <td>Features:</td>
+           <td><textarea rows="4" cols="35" name="dfeatures" id="dfeatures" disabled></textarea></td>
+           <td></td>
+         </tr>
+
+         <tr>
+           <td>Cost:</td>
+           <td>  <input type="text" size="15" name="dcost" id="dcost" disabled></td>
+           <td></td>
+         </tr>
+
+
+         <tr>
+           <td>Retail:<span id="dollar">$</span></td>
+           <td><input type="text" size="15" name="dretail" id="dretail" class="retail" disabled></td>
+		   <td></td>
+         </tr>
+
+		  <tr>
+           <td>Quantity:</td>
+           <td>  <input type="text" size="15" name="dquantity" id="dquantity" disabled></td>
+		   <td></td>
+         </tr>
+		 
+         <tr>
+           <td>Product Image:</td>
+           <td><div id="dpic"><img src="defaultPic.png" height="100px" width="auto"></div></td>
+		   <td></td>
+         </tr>
+		 
+		 <tr>
+           <td></td>
+           <td><div id="emptyrow"></div></td>
+		   <td></td>
+         </tr>
+        </table>
+         <br><br>
+		 <div class="formButtons">
+		  <input type="reset" name="del_reset" id="del_reset" class="btn btn-primary btn-lg" value="Clear">
+         <input type="button" id="delete" name="delete" value="Delete Product" class="btn btn-primary btn-lg">
+		 </div>
+         <br>
+		
+	</form>
+	</div>
+
+</div>
+
+</body>
+
+</html>  

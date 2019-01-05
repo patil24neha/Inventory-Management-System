@@ -1,0 +1,210 @@
+/* Code developed by Patil, Neha
+Project #1
+Spring 2018
+Username : jadrn029, 
+RED ID : 821545485 */
+*
+{
+	margin : 0;
+	padding: 0;
+}
+html
+{
+	height: 100%;
+	width: 100%;
+}
+body 
+{
+	font-size: 100%;
+	width: 100%;
+	min-width: 768px;
+	color: MidnightBlue;
+	height: 100%;
+	font-family: Arial,Helvetica,sans-serif;
+}
+form
+{
+text-align:center;
+margin-top:30px;
+margin-bottom:30px;
+margin-left:auto;
+margin-right:auto;
+padding-top:10px;
+}
+.btn
+{ background-color: MidnightBlue;
+}
+.bold
+{
+    font-weight: bold;
+}
+#header,#logOutheader
+{
+    background-color: MidnightBlue;
+	height:105px;
+	width: 100%;
+}
+#title 
+{
+margin-left:auto;
+margin-right:auto;
+height:105px;
+width: 500px;
+position: relative;
+}
+#title img
+{
+padding-top:2px;
+float:left;
+}
+#title h1 
+{
+  position: absolute;
+  top: 18px;
+  padding-left: 120px;
+  color:white;
+}
+	
+#loginerror
+{
+color:red;
+text-align: center;
+margin-left:auto;
+margin-right:auto;
+height:30px;
+}
+#content
+{
+text-align:center;
+margin-left:auto;
+margin-right:auto;
+font-size:150%;
+padding-left:20px;
+width:450px;
+height:250px;
+border: 2px solid MidnightBlue;
+margin-top:50px;
+}
+#logoutstatus
+{
+text-align:center;
+font-size:150%;
+}
+
+#tabs{display:none;}
+div#tabs 
+{
+    margin: 40px 40px 0 50px;
+    height: 500px;
+    min-width:500px;
+    }
+div#tabs ul 
+{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: 40px;
+    border-bottom: 1px solid MidnightBlue;
+}
+div#tabs ul li
+ {
+    float: left;
+    height: 30px;
+    padding: 4px 10px 0 10px;
+    margin-right: 5px;
+    border-bottom: none;
+    position: relative;  
+	
+}
+div#tabs ul li a 
+{
+    text-decoration: none;
+	font-size:150%;
+	
+}
+.ui-state-default span
+{
+
+  color:MidnightBlue;
+  padding: 7px 20px;
+}
+.ui-tabs-active  span
+{
+  background:MidnightBlue;
+  color:white;
+}
+
+#logout,#dollar
+{
+float:right;
+}
+table
+{
+	margin-left: auto;
+	margin-right: auto;
+	border-spacing: 4px;
+	border-collapse: collapse;
+	border: 2px solid MidnightBlue;
+}
+td
+{
+	padding-left:10px;
+	padding-bottom:3px;
+	padding-top:3px;
+	font-size: 20px;
+	text-align: left;
+	width: 370px;
+	vertical-align: top;
+}
+#tabs{height: 1000px;}
+.required:after
+ {
+  content:"*";
+  color:red;
+}
+#newstatus,#editstatus,#delstatus
+{
+font-size: 30px;
+height:50px;
+}
+h3
+{
+	color: MidnightBlue;
+	text-align:center;
+}
+
+select, option { width: 180px; }
+
+#pic,#epic
+{
+float:left; 
+width:270px;
+height:55px;
+}
+#imgbutton,#eimgbutton
+{
+position: absolute;
+  padding: 8px;
+  margin-left:5px;
+  display: inline;
+  }
+#imageerror,#eimgerror,#emptyrow{height:55px;}
+#epicshow,#picshow,#dpic{height:120px;}
+textarea
+{
+resize:none;
+}
+.formButtons
+{
+width:400px; 
+text-align:center; 
+margin-left: auto;
+margin-right: auto;
+}
+
+#delete,#edit,#new,#del_reset,#edit_reset,#new_reset{width:160px;}
+
+.error
+{
+color:red;
+}
